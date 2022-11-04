@@ -1,17 +1,18 @@
 # SignLens_Backstage
-SignLens is a sign language recognition system used in Microsoft HoloLens 2.
+SignLens is a sign language recognition system used in Microsoft HoloLens 2.  
 The purpose of this backstage is to collect training data of sign languages, helping improve our model's accuracy.
 
 # Architecture
-Frontend (collect keypoints): Mediapipe
-Backend: Python Flask
-Database: PostgreSQL
+- Frontend: HTML, JS, Mediapipe
+- Backend: Python Flask
+- Database: PostgreSQL
 
 # Functionality
 1. Select label and frequency for the recording data
 2. Extract keypoints by Mediapipe to training data
 
 # LICENSE
+
 Copyright 2022 SignLens Team
 
 Licensed under the Apache License, Version 2.0 (the "License");
