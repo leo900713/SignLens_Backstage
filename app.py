@@ -1,4 +1,5 @@
 from datetime import datetime
+import credentials
 
 import numpy as np
 import psycopg2
@@ -23,8 +24,8 @@ BOPOMOFO = [
 
 @app.route("/")
 def home():
-    conn = psycopg2.connect(database="postgres", user="signlens", password="AILab4141",
-                            host="signlens.postgres.database.azure.com", port="5432")
+    conn = psycopg2.connect(database=credentials.DATABASE, user=credentials.USER, password=credentials.PASSWORD,
+                            host=credentials.HOST, port=credentials.PORT)
     cur = conn.cursor()
     cur.execute("SELECT DISTINCT c_label, bopomofo FROM signlens;")
     result = cur.fetchall()
@@ -50,8 +51,8 @@ def upload():
     bopomofo = pinyin(label, style=Style.BOPOMOFO_FIRST)[0][0]
     print(time, label)
 
-    conn = psycopg2.connect(database="postgres", user="signlens", password="AILab4141",
-                            host="signlens.postgres.database.azure.com", port="5432")
+    conn = psycopg2.connect(database=credentials.DATABASE, user=credentials.USER, password=credentials.PASSWORD,
+                            host=credentials.HOST, port=credentials.PORT)
     cur = conn.cursor()
     for keypoints in data:
         cur.execute("INSERT INTO signlens (c_label,keypoint,submission_time,bopomofo) VALUES (%s,%s,%s,%s);",
